@@ -1,7 +1,55 @@
 #hero {
   background: var(--main);
-  height: 100vh;
+  position: relative;
+  height: 130svh;
+  padding: 0;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  color: var(--text-yellow);
+
+  h1 {
+    margin: 0;
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+
+  .sticky-wrapper {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+  }
+
+  .hero-headline {
+    position: relative;
+    padding-top: 150px;
+    z-index: 1;
+  }
+
+  .hero-animation {
+    position: absolute;
+    overflow: hidden;
+    height: 100vh;
+
+    svg {
+      width: 100% !important;
+      height: auto !important;
+    }
+  }
+
+  /* Portrait: viewport height > viewport width */
+  @media (max-aspect-ratio: 16/9) {
+    .hero-animation svg {
+      width: auto !important;
+      height: 100% !important;
+    }
+  }
 }
+
 #intro {
   background: var(--bg);
 
@@ -14,15 +62,13 @@
     height: fit-content;
     width: 30%;
     top: 100px;
-
-    margin-bottom: 25%;
   }
   .right-container {
     width: 70%;
   }
-  .intro-right {
-    height: 100vh;
-  }
+  /*.intro-right {*/
+  /*  height: 100vh;*/
+  /*}*/
   .toolkit-container {
     align-items: flex-end;
   }
@@ -42,8 +88,104 @@
   }
 }
 #projects {
-  background: var(--accent);
-  color: white;
+  --emunah: #23F782;
+  --emunah-text: #06121E;
+  --emunah-bg: #EBEBEB;
+  --emunah-tag: #D4FFE7;
+  --emunah-tag-text: #1C5636;
+  --anailyzer: #E6AE2E;
+  --anailyzer-text: #061726;
+  --anailyzer-bg: #F5F6F4;
+  --anailyzer-tag: #FFF3D7;
+  --anailyzer-tag-text: #51421F;
+  --reserbiyahe: #9baf70;
+  --reserbiyahe-text: #1E1E24;
+  --reserbiyahe-bg: #FFFCF8;
+  --reserbiyahe-tag: #D4FFE7;
+  --reserbiyahe-tag-text: #333827;
+  --langmap: #0F9EED;
+  --langmap-text: #011A28;
+  --langmap-bg: #81D4F8;
+  --langmap-tag: #DFF4FF;
+  --langmap-tag-text: #173E53;
+  --navigator: #FFA6C8;
+  --navigator-text: #152128;
+  --navigator-bg: #F8E9D1;
+  --navigator-tag: #FFEAF2;
+  --navigator-tag-text: #584049;
+
+  height: 100vh;
+  transition-duration: 0.3s;
+
+  h2 {
+    font-family: var(--heading), sans-serif;
+    font-weight: 700;
+  }
+  p {
+    margin-bottom: 12px;
+  }
+  img {
+    width: auto;
+    height: auto;
+    max-width: none;
+  }
+
+  .project-container {
+    width: 50%;
+  }
+  .project-button-wrapper {
+    width: 75px;
+    aspect-ratio: 1/1;
+  }
+  .project-icon {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s ease, width 0.5s ease;
+
+  }
+  .project-icon-container.selected,
+  .project-icon-container:hover {
+    width: 75px;
+  }
+  .project-buttons-container {
+    width: fit-content;
+  }
+  .project-icon-container {
+    position: relative;
+    width: 50px;
+    aspect-ratio: 1/1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+    cursor: pointer;
+  }
+  .project-icon.fade-in {
+    opacity: 1;
+    z-index: 1;
+  }
+  .project-icon.fade-out {
+    opacity: 0;
+    z-index: 0;
+  }
+  .project-container {
+    width: 50%;
+    transition: opacity 0.25s ease-in-out;
+  }
+  .project-container.fade-in {
+    opacity: 1;
+  }
+  .project-container.fade-out {
+    opacity: 0;
+  }
+  .tags {
+    padding: 20px 0;
+  }
+  .tag {
+    padding: 4px 12px;
+    border-radius: 16px;
+    border: 2px black solid;
+  }
 }
 #contact {
   background: var(--main);
@@ -51,21 +193,31 @@
   height: 100vh;
   display: flex;
   align-items: center;
+  padding-right: 20px;
 
   h4{
     font-weight: 700;
   }
 
   .contact-container {
+    z-index: 1;
     width: 500px;
+    min-width: 500px;
+  }
+  .contact-animation {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
   }
 }
 #footer {
   background: var(--main);
+  padding-top: 0;
   padding-bottom: 50px;
 
   .line {
     background-color: var(--border);
+    margin-bottom: 50px;
     width: 100%;
     height: 1px;
   }
@@ -99,6 +251,23 @@
 }
 .gap-25 {
   gap: 25px;
+}
+.gap-50 {
+  gap: 50px;
+}
+
+.tooltip {
+  position: absolute;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.2s;
+  font-family: 'Lexend', serif;
+  box-shadow: 0 15px 25px 0 rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 1500px) {

@@ -40,7 +40,8 @@ h5 {
   font-family: var(--heading), sans-serif;
 }
 h2,
-h3 {
+h3,
+p {
   font-family: var(--sans), sans-serif;
   font-weight: 400;
 }
@@ -73,9 +74,32 @@ h5 {
   font-size: 20px;
   line-height: 25px;
 }
+p {
+  font-size: 20px;
+  line-height: 25px;
+}
 
 section {
   padding: 100px 200px;
+  position: relative;
+}
+
+button {
+  padding: 16px 20px;
+  font-family: var(--sans), sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  border: 2px solid var(--main);
+  border-radius: 5px;
+  background: var(--main);
+  color: var(--text-yellow);
+  cursor: pointer;
+}
+
+button.hollow {
+  background: transparent;
+  border: 2px solid var(--main);
+  color: var(--main);
 }
 
 @media (max-width: 1500px) {
@@ -99,7 +123,15 @@ section {
     font-size: 16px;
     line-height: 20px;
   }
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
   section {
     padding: 50px 100px;
+  }
+  button {
+    font-size: 16px;
+    padding: 12px 16px;
   }
 }
